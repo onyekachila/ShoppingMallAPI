@@ -70,7 +70,34 @@ framework that we want to return an enumeration of categories, and the Task type
  When using the Repository Pattern, we define repository classes, that basically encapsulate all logic to handle data access. 
  CRUD Operations
 
+ Inside the Domain folder, create a new directory called Repositories. Then, add a new interface called ICategoryRespository
+ to return the data.
+
+We’ll use the Entity Framework Core (I’ll call it EF Core for simplicity) as our database ORM. This framework comes with 
+ASP.NET Core as its default ORM and exposes a friendly API that allows us to map classes of our applications to database tables.
+
+ The constructor we added to this class is responsible for passing the database configuration to the base class through dependency injection.
+
+Now, we have to create two DbSet properties. These properties are sets (collections of unique objects) that map models to database tables.
+We also override the OnModelCreating method as well as addingsample database seeding code.
+
+Having implemented the database context class, we can implement the categories repository. 
+Add a new folder called Repositories inside the Persistence folder, and then add a new class called BaseRepository.
  
+The BaseRepository receives an instance of our AppDbContext through dependency injection and exposes a protected property 
+(a property that can only be accessible by the children classes) called _context, that gives access to all methods we need
+ to handle database operations.
+
+Add a new class on the same folder called CategoryRepository. Now we’ll really implement the repository logic:
+
+
+
+
+
+
+
+
+
 
 
 

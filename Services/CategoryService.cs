@@ -2,14 +2,22 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ShoppingMall.API.Domain.Models;
 using ShoppingMall.API.Domain.Services;
+using ShoppingMall.API.Domain.Repositories; 
 
 namespace ShoppingMall.API.Services
 {
     public class CategoryService : ICategoryService
     {
-        Task<IEnumerable<Category>> ICategoryService.ListAsync()
+        private readonly ICategoryRepository _categoryRepository;
+
+        public CategoryService(ICategoryRepository categoryRepository)
         {
-            throw new System.NotImplementedException();
+            this._categoryRepository = categoryRepository;
+        }
+
+        public async Task<IEnumerable<Category>> ListAsync()
+        { 
+            return await _categoryRepository.ListAsync(); 
         }
     }
 }
