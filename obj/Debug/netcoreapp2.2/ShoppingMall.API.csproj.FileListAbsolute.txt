@@ -1,0 +1,14 @@
+C:\ProWeb\ShoppingMall.API\bin\Debug\netcoreapp2.2\ShoppingMall.API.deps.json
+C:\ProWeb\ShoppingMall.API\bin\Debug\netcoreapp2.2\ShoppingMall.API.runtimeconfig.json
+C:\ProWeb\ShoppingMall.API\bin\Debug\netcoreapp2.2\ShoppingMall.API.runtimeconfig.dev.json
+C:\ProWeb\ShoppingMall.API\bin\Debug\netcoreapp2.2\ShoppingMall.API.dll
+C:\ProWeb\ShoppingMall.API\bin\Debug\netcoreapp2.2\ShoppingMall.API.pdb
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.csprojAssemblyReference.cache
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.csproj.CoreCompileInputs.cache
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.RazorAssemblyInfo.cache
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.RazorAssemblyInfo.cs
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.AssemblyInfoInputs.cache
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.AssemblyInfo.cs
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.RazorTargetAssemblyInfo.cache
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.dll
+C:\ProWeb\ShoppingMall.API\obj\Debug\netcoreapp2.2\ShoppingMall.API.pdb

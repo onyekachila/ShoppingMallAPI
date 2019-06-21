@@ -90,13 +90,73 @@ The BaseRepository receives an instance of our AppDbContext through dependency i
 
 Add a new class on the same folder called CategoryRepository. Now we’ll really implement the repository logic:
 
+Configuring Dependency Injection
+
+
+The scoped lifetime tells the ASP.NET Core pipeline that every time it needs to resolve a class that receives an instance of 
+AppDbContext as a constructor argument, it should use the same instance of the class. If there is no instance in memory, the 
+pipeline will create a new instance, and reuse it throughout all classes that need it, during a given request. This way, you don’t 
+need to manually create the class instance when you need to use it.
+
+
+Code reusability;
+Better productivity, since when we have to change implementation, we don’t need to bother to change a hundred places where you use that feature;
+
+You can easily test the application since we can isolate what we have to test using mocks (fake implementation of classes) where we have to pass 
+interfaces as constructor arguments;
+
+When a class needs to receive more dependencies via a constructor, you don’t have to manually change all places where the instances are being 
+created (that’s awesome!).
+
+
+We need to make changes to our Program class to enable it seed the database. 
 
 
 
+dotnet run
+
+https://localhost:5001/api/categories
+
+we will see th categories.
+
+To shape our data such that we dont return an empty product we make use of the resource class. Meaning
+all responses from API endpoints must return a resource.
+
+It is a bad practice to return the real model representation as the response since it can contain information that the 
+client application does not need or that it doesn’t have permission to have (for example, a user model could return information of
+ the user password, which would be a big security issue).
+
+We need a resource to represent only our categories, without the products.
+
+Now that you know what a resource is, let’s implement it. First of all, stop the running application pressing Ctrl + C at the 
+command line. In the root folder of the application, create a new folder called Resources. There, add a new class called 
+CategoryResource. 
+
+We have to map our collection of category models, that is provided by our category service, to a collection of category resources.
+
+We’ll use a library called AutoMapper to handle mapping between objects. AutoMapper is a very popular library in the .NET world, 
+and it is used in many commercial and open source projects.
+
+so we will add the following package.
+
+dotnet add package AutoMapper
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection 
 
 
+To use AutoMapper, we have to do two things:
 
+Register it for dependency injection;
+Create a class that will tell AutoMapper how to handle classes mapping.
+First of all, open the Startup class. In the ConfigureServices method, after the last line, add the following code:
 
+services.AddAutoMapper();
+
+This line handles all necessary configurations of AutoMapper, such as registering it for dependency injection and scanning 
+the application during startup to configure mapping profiles.
+
+Now, in the root directory, add a new folder called Mapping, then add a class called ModelToResourceProfile. Change the code this way:
+
+The final step consists of changing the categories controller to use AutoMapper to handle our objects mapping.
 
 
 
