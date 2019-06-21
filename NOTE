@@ -1,0 +1,76 @@
+dotnet new webapi -o ShoppingMall.API
+
+add git and push to my repository.
+
+Starting with the domain. We will have the model classes here. 
+This is a representation of the products and categories in form of classes as well as the repositories and services interfaces.
+
+We create a domain folder to house the above.
+create a models folder and create the model classes in it. Category and Product respectively. 
+Note the product and category are POCO classes (Plain Old CLR Object). Meaning the the classes
+will have properties to describe its basic information.
+We also create an enum EUnitOfMeasurement to hold the measurement of units.
+
+Next we create category controller CategoriesController.
+add the attribute for routing [Route("/api/[controller]")]
+
+To get all categories we can reach the api end point /api/categories via the httpget verb.
+We will create a service for this purpose.
+
+A service is basically a class or interface that defines methods to handle some business logic task
+that require some interaction between other services or models. e.g. authentication, payment, complex data flow
+caching e.t.c.
+
+Using service we can isolate the request and response handling the the real logic needed to complete a task.
+
+To define a behaviour in most object oriented programming, we use the interface. An interface tells how something should work
+but does not implement the real logic for the behaviour. The logic is implmented in classes that implement the interface.
+
+So we will create a folder called services in the domain folder and create an interface called ICategoryService.
+By convention interfaces name starts with a capital letter I.
+
+The ListAsync() method must return asynchronously an enumeration of categories.
+
+The Task class, encapsulate the return, indicates asynchrony. 
+
+The whole idea for using an interface is that it allow us to abstract the desired behaviour from the real implementation 
+This also allows us to make use of the concept called dependency injection. 
+
+Basically, when you use dependency injection, you define some behaviors using an interface. 
+Then, you create a class that implements the interface. Finally, you bind the references from the 
+interface to the class you created.
+
+“ - It sounds really confusing. Can’t we simply create a class that does these things for us?”
+Let’s continue implementing our API and you will understand why to use this approach.
+
+
+I have defined a constructor function for our controller (a constructor is called when a new instance of a class is created), 
+and it receives an instance of ICategoryService. It means the instance can be anything that implements the service interface. 
+I store this instance in a private, read-only field _categoryService. We’ll use this field to access the methods of our category 
+service implementation.
+
+By the way, the underscore prefix is another common convention to denote a field. This convention, 
+in special, is not recommended by the official naming convention guideline of .NET, but it is a very common 
+practice as a way to avoid having to use the “this” keyword to distinguish class fields from local variables. 
+I personally think it’s much cleaner to read, and a lot of frameworks and libraries use this convention.
+
+Below the constructor, I defined the method that is going to handle requests for /api/categories. 
+The HttpGet attribute tells the ASP.NET Core pipeline to use it to handle GET requests (this attribute can be omitted, but 
+it’s better to write it for easier legibility).
+
+The method uses our category service instance to list all categories and then returns the categories to the client. 
+The framework pipeline handles the serialization of data to a JSON object. The IEnumerable<Category>type tells the 
+framework that we want to return an enumeration of categories, and the Task type, preceded by the async keyword, tells
+ the pipeline that this method should be executed asynchronously. Finally, when we define an async method, we have to use 
+ the await keyword for tasks that can take a while.
+
+ A service class is not a class that should handle data access. There is a pattern called Repository Pattern
+ that is used to manage data from databases.
+
+ When using the Repository Pattern, we define repository classes, that basically encapsulate all logic to handle data access. 
+ CRUD Operations
+
+ 
+
+
+
